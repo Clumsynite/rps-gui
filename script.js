@@ -3,8 +3,9 @@ let paper = document.getElementById('paper');
 let scissors = document.getElementById('scissors');
 let history = document.getElementById('history');
 let scoreBoard = document.getElementById('score');
-
-let matches = win = loss = draw = 0;
+let btns = document.querySelectorAll('.play');
+let resetDiv = document.getElementById('resetDiv');
+let matches = player = computer = 0;
 
 function computerPlay() {
     let randomNumber = Math.floor(Math.random() * (3-1+1)) + 1;
@@ -43,24 +44,42 @@ function status (playerSelection, computerSelection){
 }
 
 function game(computerSelection, playerSelection) {
+    
     let result = playRound(computerSelection, playerSelection);
     let score = status(playerSelection, computerSelection);
     if(score==0){
-        draw++;
+        
     }else if(score==1){
-        win++;
+        player++;
     }else if(score==-1){
-        loss++;
+        computer++;
     }
     matches++;
-    console.log(result+"\n\nMatches: "+(matches)+"\nWin: "+win+"\nLosses: "+loss+"\nDraws: "+draw); 
-    let scoreTemp = `Matches: ${matches} | Wins: ${win} | Losses ${loss} | Draw : ${draw}`;
+    console.log(result+`\n\nMatches: ${matches} | Wins: ${player} | Losses ${computer} `); 
+    let scoreTemp = `Matches: ${matches} | Player: ${player} | Computer: ${computer} `;
     let p = document.createElement('h4');
     let res = document.createTextNode("Round: "+matches+".."+result);
     p.appendChild(res);
     history.insertBefore(p, history.firstChild);
     scoreBoard.textContent = scoreTemp;
+    if (player === 5 || computer === 5) {
+        p.style.color = "red";
+        p.lastChild.textContent = `Congratulations you won this game`;
+        btns.forEach(btn => {btn.disabled = true;})
+        let reset = document.createElement('button');
+        reset.id = "reset";
+        reset.textContent = "Reset";
+        reset.style.backgroundColor = 'black';
+        reset.style.color = 'cyan';
+        reset.style.width = "100%";
+        reset.style.padding = "3px";
+        resetDiv.appendChild(reset);
+        reset.addEventListener('click', () => {
+            location.reload();
+        });
+    }
 }
+
 
 rock.addEventListener('click', () => {
     game(computerPlay(), rock.id);
