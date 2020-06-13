@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
     
     <div id="score">
-        Matches: 0 | Wins: 0 | Losses: 0 | Draw: 0
+        Matches: 0 | Player: 0 | Computer: 0
     </div>
 
-    <button value="button" id="rock">Rock</button>
-    <button value="button" id="paper">Paper</button>
-    <button value="button" id="scissors">Scissors</button> 
+    <button value="button" id="rock" class="play">Rock</button>
+    <button value="button" id="paper" class="play">Paper</button>
+    <button value="button" id="scissors" class="play">Scissors</button> 
     
     <div id="history">
     </div>
+    <div id="resetDiv"></div>
     <script src="script.js"></script>
 </body>
 </html>
