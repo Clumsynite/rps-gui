@@ -1,58 +1,22 @@
-<script>
-    function computerPlay() {
-        let randomNumber = Math.floor(Math.random() * (3-1+1)) + 1;
-        let move = "";
-        (randomNumber==1)?move="rock":(randomNumber==2)?move =  "paper": move =  "scissors" ;
-        return move;
-    }
-
-    function playRound (computerSelection, playerSelection) {
-        if (computerSelection === playerSelection.toLowerCase()){
-            return "It's a tie";
-        } else if(computerSelection==='rock' && playerSelection.toLowerCase()==='paper') {
-            return "You Win! Paper beats Rock";
-        } else if(computerSelection==='rock' && playerSelection.toLowerCase()==='scissors') {
-            return "You Lose! Rock beats Scissors";
-        } else if(computerSelection==='paper' && playerSelection.toLowerCase()==='rock') {
-            return "You Lose! Paper beats Rock";
-        } else if(computerSelection==='paper' && playerSelection.toLowerCase()==='scissors') {
-            return "You Win! Scissors beats Paper";
-        } else if(computerSelection==='scissors' && playerSelection.toLowerCase()==='paper') {
-            return "You Lose! Scissors beat Paper";
-        } else if(computerSelection==='scissors' && playerSelection.toLowerCase()==='rock') {
-            return "You Win! Rock beats Scissors";
-        }   
-    }
-
-    function status (playerSelection, computerSelection){
-        if (playerSelection === computerSelection) return 0;
-        if (playerSelection==='rock' && computerSelection==='scissors' || 
-        playerSelection==='paper' && computerSelection==='rock' || playerSelection==='scissors' && computerSelection==='paper'){
-            return 1;
-        } else {
-            return -1;
-        }
-        
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
     
-    function game() {
-        let win = loss = draw = 0;
-        for (let i=0;i < 5; i++) {
-            let userInput = prompt("What's your move (rock, paper, scissors)");
-            const playerSelection = userInput.toLowerCase();
-            const computerSelection = computerPlay();
-            let result = playRound(computerSelection, playerSelection);
-            let score = status(playerSelection, computerSelection);
-            if(score==0){
-                draw++;
-            }else if(score==1){
-                win++;
-            }else if(score==-1){
-                loss++;
-            }
-            console.log(result+"\n\nMatches: "+(i+1)+"\nWin: "+win+"\nLosses: "+loss+"\nDraws: "+draw);
+    <div id="score">
+        Matches: 0 | Wins: 0 | Losses: 0 | Draw: 0
+    </div>
 
-        }  
-    }
-    game();
-</script>
+    <button value="button" id="rock">Rock</button>
+    <button value="button" id="paper">Paper</button>
+    <button value="button" id="scissors">Scissors</button> 
+    
+    <div id="history">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
