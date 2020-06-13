@@ -63,16 +63,18 @@ function game(computerSelection, playerSelection) {
     history.insertBefore(p, history.firstChild);
     scoreBoard.textContent = scoreTemp;
     if (player === 5 || computer === 5) {
+        let statement = "Don't know what to say";
+        if(player === 5){
+            statement = `Congratulations! You won this game`;
+        }else if(computer === 5) {
+            statement = `Oh no! You lost but you can try again`;
+        }
         p.style.color = "red";
-        p.lastChild.textContent = `Congratulations you won this game`;
+        p.lastChild.textContent = statement;
         btns.forEach(btn => {btn.disabled = true;})
         let reset = document.createElement('button');
         reset.id = "reset";
-        reset.textContent = "Reset";
-        reset.style.backgroundColor = 'black';
-        reset.style.color = 'cyan';
-        reset.style.width = "100%";
-        reset.style.padding = "3px";
+        reset.textContent = "New Game";
         resetDiv.appendChild(reset);
         reset.addEventListener('click', () => {
             location.reload();
