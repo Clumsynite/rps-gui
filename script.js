@@ -56,9 +56,9 @@ function game(computerSelection, playerSelection) {
     }
     matches++;
     console.log(result+`\n\nMatches: ${matches} | Wins: ${player} | Losses ${computer} `); 
-    let scoreTemp = `Matches: ${matches} | Player: ${player} | Computer: ${computer} `;
+    let scoreTemp = `Player: ${player} | Computer: ${computer} `;
     let p = document.createElement('h4');
-    let res = document.createTextNode("Round: "+matches+".."+result);
+    let res = document.createTextNode("Match: "+matches+".."+result);
     p.appendChild(res);
     history.insertBefore(p, history.firstChild);
     scoreBoard.textContent = scoreTemp;
