@@ -70,6 +70,7 @@ function game(computerSelection, playerSelection) {
             statement = `Oh no! You lost but you can try again`;
         }
         p.style.color = "red";
+        p.id = "log";
         p.lastChild.textContent = statement;
         btns.forEach(btn => {btn.disabled = true;})
         let reset = document.createElement('button');

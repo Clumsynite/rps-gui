@@ -1,12 +1,4 @@
-#resetDiv {
-    text-align: center;
-}
-
-#buttons {
-    text-align: center;
-}
-
-#score {
+#score, #buttons, #resetDiv, #history {
     text-align: center;
 }
 
